@@ -1,10 +1,10 @@
 from setuptools import setup
 
-package_name = 'ROS2_AIS_Forwarder'
+package_name = 'AIS_Forwarder'
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='0.0.1',
     packages=[package_name],
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -13,10 +13,10 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='sjlexau',
-    maintainer_email='sjlexau@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='Simon J.N. Lexau',
+    maintainer_email='simon.lexau@ntnu.no',
+    description='Reads live AIS data from The Norwegian Coastal Administration "BarentsWatch" API, and publish the information as a ROS 2 topic',
+    license='The MIT License',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [

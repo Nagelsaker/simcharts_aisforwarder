@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>ROS2_AIS_Forwarder</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="sjlexau@todo.todo">sjlexau</maintainer>
-  <license>TODO: License declaration</license>
+  <name>AIS_Forwarder</name>
+  <version>0.0.1</version>
+  <description>Reads live AIS data from The Norwegian Coastal Administration "BarentsWatch" API, and publish the information as a ROS 2 topic</description>
+  <maintainer email="simon.lexau@ntnu.no">Simon J.N. Lexau</maintainer>
+  <license>The MIT License</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
