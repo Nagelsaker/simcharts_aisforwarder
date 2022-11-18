@@ -1,0 +1,9 @@
+api:
+  required: True
+  type: dict
+  schema:
+    active:
+      required: True
+      type: list
+      allowed: ['norway_barents_watch']
+      minlength: 1

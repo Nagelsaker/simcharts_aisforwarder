@@ -1,0 +1,5 @@
+# Don't save credentials in the repository
+api_credentials/*/*.yaml
+
+# Don't save cached data in the repository
+**/__pycache__/

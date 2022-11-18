@@ -1,1 +1,1 @@
-from norway_barents_watch.barents_watch_reader import BarentsWatchReader
+from .norway_barents_watch import BarentsWatchReader

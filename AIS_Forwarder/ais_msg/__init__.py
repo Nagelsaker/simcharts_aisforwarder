@@ -1,1 +1,1 @@
-from ais_msg import AIS_msg
+from .ais_msg import AISmsg
