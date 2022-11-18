@@ -1,0 +1,1 @@
+from ais_msg_parser import AIS_msg_parser
