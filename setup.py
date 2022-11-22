@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'AIS_Forwarder'
+package_name = 'simcharts_aisforwarder'
 
 setup(
     name=package_name,

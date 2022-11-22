@@ -1,5 +1,6 @@
 from utils import read_yaml_into_dict, dcp
 from ais_msg_parser import AISmsgParser
+from ais_msg import AISmsg
 from typing import List
 import requests
 import ast
@@ -31,7 +32,7 @@ class BarentsWatchReader:
                 'scope' : self.scope, 'grant_type' : 'client_credentials'})
         self.token = ast.literal_eval(ret.content.decode('utf-8'))['access_token']
 
-    def getLatestAISMsgs(self) -> List[dict]:
+    def getLatestAISMsgs(self) -> List[AISmsg]:
         self.refreshAccessToken()
         ret = requests.get(
             self.ais_url,
