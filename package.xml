@@ -17,8 +17,8 @@
   <exec_depend>rclpy</exec_depend>
   <exec_depend>requests</exec_depend>
   <exec_depend>cerberus</exec_depend>
-  <exec_depend>yaml</exec_depend>
-  <exec_depend>pathlib</exec_depend>
+  <exec_depend>PyYaml</exec_depend>
+  <exec_depend>astdump</exec_depend>
 
   <export>
     <build_type>ament_python</build_type>
