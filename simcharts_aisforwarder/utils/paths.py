@@ -1,11 +1,11 @@
 '''
-Defines hard-coded paths to relevant files in the AIS_Forwarder package
+Defines hard-coded paths to relevant files in the simcharts_aisforwarder package
 '''
 
 import pathlib
 
 root = pathlib.Path(__file__).parents[2]
-package = root / 'AIS_Forwarder'
+package = root / 'simcharts_aisforwarder'
 
 config = root / 'config.yaml'
 config_schema = root / 'config_schema.yaml'
