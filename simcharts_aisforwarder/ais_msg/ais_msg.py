@@ -1,7 +1,9 @@
+from simcharts_interfaces.msg import AIS
 
-class AISmsg:
+class AISmsg(AIS):
     '''
-    AIS message class
+    Overloaded AIS msg class from the simcharts_interfaces package
+    Easier to use and more readable. Also useful for debugging.
     Stores information from different types of AIS messages in a general data class
 
     The following AIS parameters are a minimum requirement for the AIS message to be valid:
@@ -10,41 +12,18 @@ class AISmsg:
     - longitude : float (Longitude of the vessel)
     - latitude : float (Latitude of the vessel)
 
-    The following AIS parameters are optional:
-    - SOG : float (Speed over ground)
-    - COG : float (Course over ground)
-    - heading : float (Heading angle)
-    - ROT : float (Rate of turn)
+    The following AIS parameters are optional, and are given as strings
+    since they are not always available in the AIS message:
+    - sog : str (Speed over ground)
+    - cog : str (Course over ground)
+    - heading : str (Heading angle)
+    - rot : str (Rate of turn)
     - name : str (Vessel name)
-    - shipType : int (Vessel type)
+    - shiptype : str (Vessel type)
     '''
 
-    # Required parameters
-    mmsi = None
-    timestamp = None
-    longitude = None
-    latitude = None
-
-    # Optional parameters
-    SOG = None
-    COG = None
-    heading = None
-    ROT = None
-    name = None
-    ship_type = None
-
-
-    def __init__(self, mmsi=None, timestamp=None, longitude=None, latitude=None, SOG=None, COG=None, heading=None, ROT=None, name=None, ship_type=None):
-        self.mmsi = mmsi
-        self.timestamp = timestamp
-        self.longitude = longitude
-        self.latitude = latitude
-        self.SOG = SOG
-        self.COG = COG
-        self.heading = heading
-        self.ROT = ROT
-        self.name = name
-        self.ship_type = ship_type
+    def __init__(self):
+        super().__init__()
     
     def isValid(self):
         '''

@@ -1,2 +1,4 @@
 api:
-  active: ['norway_barents_watch']
+  norway_barents_watch:
+    active: True
+    T: 10.0

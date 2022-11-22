@@ -1,9 +1,8 @@
-from ais_msg import AISmsg
-from utils import log_unparsed_parameter
+from .. import AISmsg
+from .. import log_unparsed_parameter
+from simcharts_interfaces.msg import ListOfAIS
 from typing import List
-from utils import paths as dcp # dcp = directory_config_paths
-from csv import reader, writer
-import os
+import datetime
 
 class AISmsgParser:
     '''
@@ -23,7 +22,7 @@ class AISmsgParser:
         self.ais_strings = ais_strings
         self.ais_msgs = []
     
-    def parse(self) -> List[AISmsg]:
+    def parse(self) -> ListOfAIS:
         '''
         Parses a list of AIS message strings into the general AISmsg data class
         '''
@@ -31,7 +30,11 @@ class AISmsgParser:
             ais_msg = self._parse_single_msg(msg)
             if ais_msg is None: continue
             self.ais_msgs.append(ais_msg)
-        return self.ais_msgs
+            listOfAIS = ListOfAIS()
+            listOfAIS.ais_msgs = self.ais_msgs
+            timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+            listOfAIS.timestamp = timestamp
+        return listOfAIS
 
     def _parse_single_msg(self, msg: dict) -> AISmsg:
         '''
@@ -45,12 +48,12 @@ class AISmsgParser:
                 elif key == 'msgtime': ais_msg.timestamp = msg[key]
                 elif key == 'longitude': ais_msg.longitude = float(msg[key])
                 elif key == 'latitude': ais_msg.latitude = float(msg[key])
-                elif key == 'speedOverGround': ais_msg.SOG = float(msg[key])
-                elif key == 'courseOverGround': ais_msg.COG = float(msg[key])
-                elif key == 'trueHeading': ais_msg.heading = float(msg[key])
-                elif key == 'rateOfTurn': ais_msg.ROT = float(msg[key])
+                elif key == 'speedOverGround':ais_msg.sog = str(msg[key]) # float(msg[key])
+                elif key == 'courseOverGround': ais_msg.cog = str(msg[key]) # float(msg[key])
+                elif key == 'trueHeading': ais_msg.heading = str(msg[key]) # float(msg[key])
+                elif key == 'rateOfTurn': ais_msg.rot = str(msg[key]) # float(msg[key])
                 elif key == 'name': ais_msg.name = msg[key]
-                elif key == 'shipType': ais_msg.ship_type = int(msg[key])
+                elif key == 'shipType': ais_msg.shiptype = str(msg[key]) # int(msg[key])
                 else: log_unparsed_parameter(key, msg[key])
             except:
                 if msg[key] == '' or msg[key] == 'null': continue

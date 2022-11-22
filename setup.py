@@ -1,11 +1,12 @@
 from setuptools import setup
 
 package_name = 'simcharts_aisforwarder'
+packages = ['simcharts_aisforwarder', 'simcharts_aisforwarder/ais_msg', 'simcharts_aisforwarder/ais_msg_parser', 'simcharts_aisforwarder/api_readers', 'simcharts_aisforwarder/api_readers/norway_barents_watch', 'simcharts_aisforwarder/utils']
 
 setup(
     name=package_name,
     version='0.0.1',
-    packages=[package_name],
+    packages=packages,
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -20,6 +21,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'ais_publisher = simcharts_aisforwarder.ais_publisher:main',
+            'ais_subscriber = simcharts_aisforwarder.ais_subscriber:main',
         ],
     },
 )

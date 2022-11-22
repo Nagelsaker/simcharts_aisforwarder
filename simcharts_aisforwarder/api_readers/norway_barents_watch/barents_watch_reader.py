@@ -1,9 +1,10 @@
-from utils import read_yaml_into_dict, dcp
-from ais_msg_parser import AISmsgParser
-from ais_msg import AISmsg
+from ... import read_yaml_into_dict, dcp
+from ...ais_msg_parser import AISmsgParser
+from ...ais_msg import AISmsg
 from typing import List
 import requests
 import ast
+from pathlib import Path
 
 class BarentsWatchReader:
     '''
@@ -17,6 +18,15 @@ class BarentsWatchReader:
         self.loadCredentials()
 
     def loadCredentials(self) -> None:
+        '''
+        Loads the credentials from the credential file
+        '''
+        # Check if credentials file exists
+        if not dcp.credentials_norway_barents_watch.exists():
+            print("\nError! Credentials file not found! \n" +
+                "Please create a credentials file in: 'simcharts_aisforwarder/'api_credentials/norway_barents_watch/credentials.yaml' \n" +
+                "with the format specified in: 'simcharts_aisforwarder/'api_credentials/norway_barents_watch/info.md' \n")
+            raise FileNotFoundError
         self.credentials = read_yaml_into_dict(dcp.credentials_norway_barents_watch)['credentials']
         self.client_id = self.credentials['client_id']
         self.client_secret = self.credentials['client_secret']
@@ -25,6 +35,9 @@ class BarentsWatchReader:
         self.ais_url = self.credentials['ais_url']
 
     def refreshAccessToken(self) -> str:
+        '''
+        Refreshes the access token
+        '''
         ret = requests.post(
             self.access_url,
             headers={'Content-Type' : 'application/x-www-form-urlencoded'},
@@ -33,6 +46,9 @@ class BarentsWatchReader:
         self.token = ast.literal_eval(ret.content.decode('utf-8'))['access_token']
 
     def getLatestAISMsgs(self) -> List[AISmsg]:
+        ''' 
+        Returns the latest AIS messages from the BarentsWatch API
+        '''
         self.refreshAccessToken()
         ret = requests.get(
             self.ais_url,
@@ -45,6 +61,10 @@ class BarentsWatchReader:
         
 
     def _reformatRawAISData(self, ais_string: str) -> List[dict]:
+        '''
+        Reformats the raw AIS data from the BarentsWatch API into a list of AIS messages
+        organized as dictionaries
+        '''
         # Remove redundant symbols
         ais_string = ais_string[1:-1].replace('{', '')
         ais_list_of_strings = ais_string.split('}')[:-1]

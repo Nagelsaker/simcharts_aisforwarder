@@ -15,6 +15,10 @@
   <build_depend>simcharts_interfaces</build_depend>
   <exec_depend>simcharts_interfaces</exec_depend>
   <exec_depend>rclpy</exec_depend>
+  <exec_depend>requests</exec_depend>
+  <exec_depend>cerberus</exec_depend>
+  <exec_depend>yaml</exec_depend>
+  <exec_depend>pathlib</exec_depend>
 
   <export>
     <build_type>ament_python</build_type>

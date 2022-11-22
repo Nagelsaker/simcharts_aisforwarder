@@ -1,9 +1,14 @@
 api:
   required: True
   type: dict
-  schema:
-    active:
+  schema:  
+    norway_barents_watch:
       required: True
-      type: list
-      allowed: ['norway_barents_watch']
-      minlength: 1
+      type: dict
+      schema:
+        active:
+          required: True
+          type: boolean
+        T:
+          required: True
+          type: float
