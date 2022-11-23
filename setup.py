@@ -1,4 +1,5 @@
 from setuptools import setup
+from setuptools import find_packages
 
 package_name = 'simcharts_aisforwarder'
 packages = ['simcharts_aisforwarder', 'simcharts_aisforwarder/ais_msg', 'simcharts_aisforwarder/ais_msg_parser', 'simcharts_aisforwarder/api_readers', 'simcharts_aisforwarder/api_readers/norway_barents_watch', 'simcharts_aisforwarder/utils']
@@ -6,7 +7,7 @@ packages = ['simcharts_aisforwarder', 'simcharts_aisforwarder/ais_msg', 'simchar
 setup(
     name=package_name,
     version='0.0.1',
-    packages=['simcharts_aisforwarder'],
+    packages=find_packages(),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),

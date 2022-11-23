@@ -1,1 +1,1 @@
-from ais_msg_parser import AISmsgParser
+from .ais_msg_parser import AISmsgParser

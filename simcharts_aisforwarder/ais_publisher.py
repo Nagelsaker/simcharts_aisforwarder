@@ -1,8 +1,8 @@
 import rclpy
 import rclpy.node
-from . import BarentsWatchReader
-from . import Config
-from . import dcp # dcp = directory_config_paths
+from simcharts_aisforwarder.api_readers import BarentsWatchReader
+from simcharts_aisforwarder.utils import Config
+from simcharts_aisforwarder.utils import dcp # dcp = directory_config_paths
 from simcharts_interfaces.msg import ListOfAIS
 
 class AISpublisher(rclpy.node.Node):
@@ -22,6 +22,7 @@ class AISpublisher(rclpy.node.Node):
         self.get_logger().debug('AIS Forwarder timer callback')
         latest_ais_msgs = self.bwReader.getLatestAISMsgs()
         self.publisher_.publish(latest_ais_msgs)
+        self.get_logger().debug(f'Publishing {latest_ais_msgs}')
 
 
 def main():

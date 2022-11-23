@@ -1,7 +1,7 @@
 from simcharts_aisforwarder.utils import read_yaml_into_dict, dcp
 from simcharts_aisforwarder.ais_msg_parser import AISmsgParser
 # from simcharts_aisforwarder import AISmsg
-from simcharts_interface.msg import AIS
+from simcharts_interfaces.msg import AIS
 from typing import List
 import requests
 import ast

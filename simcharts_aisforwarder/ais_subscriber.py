@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
-from . import Config
-from . import dcp # dcp = directory_config_paths
+from simcharts_aisforwarder.utils import Config
+from simcharts_aisforwarder.utils import dcp # dcp = directory_config_paths
 from simcharts_interfaces.msg import ListOfAIS
 
 class AISsubscriber(Node):

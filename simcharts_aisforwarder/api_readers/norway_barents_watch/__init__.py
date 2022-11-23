@@ -1,1 +1,0 @@
-from .barents_watch_reader import BarentsWatchReader
