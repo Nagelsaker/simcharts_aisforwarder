@@ -16,23 +16,12 @@ class AISpublisher(rclpy.node.Node):
         timer_period = settings['api']['norway_barents_watch']['T']  # seconds
         self.timer = self.create_timer(timer_period, self.timerCallback)
 
-        # self.declare_parameter('ais_forwarder', 'simcharts_interfaces/ListOfAIS')
-        # self.get_logger().info('AIS Forwarder started')
-        # self.timer = self.create_timer(1.0, self.timer_callback)
         self.bwReader = BarentsWatchReader()
 
     def timerCallback(self):
-        self.get_logger().info('AIS Forwarder timer callback')
-        # msg = ListOfAIS()
+        self.get_logger().debug('AIS Forwarder timer callback')
         latest_ais_msgs = self.bwReader.getLatestAISMsgs()
-        # msg.timestamp = latest_ais_msgs.timestamp
-        # msg.ais_msgs = latest_ais_msgs.ais_mgs
-
         self.publisher_.publish(latest_ais_msgs)
-        self.get_logger().info(f'Publishing: {latest_ais_msgs.ais_msgs[0]} ...' )
-
-
-
 
 
 def main():
@@ -41,12 +30,6 @@ def main():
     rclpy.spin(ais_forwarder)
     ais_forwarder.destroy_node()
     rclpy.shutdown()
-
-    # Load settings
-    # config = Config()
-    # bwReader = BarentsWatchReader()
-    # ais_msgs = bwReader.getLatestAISMsgs()
-    # print("wow")
 
 if __name__ == "__main__":
     main()
