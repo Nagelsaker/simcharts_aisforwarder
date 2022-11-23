@@ -1,5 +1,5 @@
-from .. import AISmsg
-from .. import log_unparsed_parameter
+from simcharts_aisforwarder.ais_msg import AISmsg
+from simcharts_aisforwarder.utils import log_unparsed_parameter
 from simcharts_interfaces.msg import ListOfAIS
 from typing import List
 import datetime

@@ -1,6 +1,7 @@
-from ... import read_yaml_into_dict, dcp
-from ...ais_msg_parser import AISmsgParser
-from ...ais_msg import AISmsg
+from simcharts_aisforwarder.utils import read_yaml_into_dict, dcp
+from simcharts_aisforwarder.ais_msg_parser import AISmsgParser
+# from simcharts_aisforwarder import AISmsg
+from simcharts_interface.msg import AIS
 from typing import List
 import requests
 import ast
@@ -45,7 +46,7 @@ class BarentsWatchReader:
                 'scope' : self.scope, 'grant_type' : 'client_credentials'})
         self.token = ast.literal_eval(ret.content.decode('utf-8'))['access_token']
 
-    def getLatestAISMsgs(self) -> List[AISmsg]:
+    def getLatestAISMsgs(self) -> List[AIS]:
         ''' 
         Returns the latest AIS messages from the BarentsWatch API
         '''
