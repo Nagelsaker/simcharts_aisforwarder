@@ -5,7 +5,6 @@ from simcharts_interfaces.msg import AIS
 from typing import List
 import requests
 import ast
-from pathlib import Path
 
 class BarentsWatchReader:
     '''
@@ -58,8 +57,6 @@ class BarentsWatchReader:
         parser = AISmsgParser(list_of_ais_strings)
         ais_msgs = parser.parse()
         return ais_msgs
-
-        
 
     def _reformatRawAISData(self, ais_string: str) -> List[dict]:
         '''

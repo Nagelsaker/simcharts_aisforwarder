@@ -27,8 +27,6 @@ class AISpublisher(Node):
         self.get_logger().debug('AIS Forwarder timer callback')
         latest_ais_msgs = self.bwReader.getLatestAISMsgs()
         self.publisher_.publish(latest_ais_msgs)
-        # self.get_logger().debug(f'Publishing {latest_ais_msgs}')
-        # self.get_logger().info(f'Publishing {latest_ais_msgs}')
 
 class AISsubscriber(Node):
     '''
