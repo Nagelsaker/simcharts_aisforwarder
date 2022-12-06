@@ -1,4 +1,4 @@
 api:
   norway_barents_watch:
     active: True
-    T: 10.0
+    T: 2.0

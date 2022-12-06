@@ -32,7 +32,7 @@ class AISmsgParser:
             self.ais_msgs.append(ais_msg)
             listOfAIS = ListOfAIS()
             listOfAIS.ais_msgs = self.ais_msgs
-            timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
+            timestamp = datetime.datetime.now().timestamp()
             listOfAIS.timestamp = timestamp
         return listOfAIS
 

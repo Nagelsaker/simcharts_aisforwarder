@@ -22,8 +22,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'ais_publisher = simcharts_aisforwarder.ais_publisher:main',
-            'ais_subscriber = simcharts_aisforwarder.ais_subscriber:main',
+            'ais_publisher = simcharts_aisforwarder.publisher:main',
+            'ais_subscriber = simcharts_aisforwarder.subscriber:main',
         ],
     },
 )
