@@ -1,5 +1,6 @@
 import rclpy
 from rclpy.node import Node
+import random
 from simcharts_aisforwarder.api_readers import BarentsWatchReader
 from simcharts_aisforwarder.utils import Config
 from simcharts_aisforwarder.utils import dcp # dcp = directory_config_paths
@@ -26,6 +27,7 @@ class AISpublisher(Node):
     def timerCallback(self):
         self.get_logger().debug('AIS Forwarder timer callback')
         latest_ais_msgs = self.bwReader.getLatestAISMsgs()
+        self.get_logger().debug(f"Random AIS message: {latest_ais_msgs.ais_msgs[random.randint(0, len(latest_ais_msgs.ais_msgs)-1)]}")
         self.publisher_.publish(latest_ais_msgs)
 
 class AISsubscriber(Node):
